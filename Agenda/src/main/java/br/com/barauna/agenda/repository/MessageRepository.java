@@ -14,7 +14,7 @@ import br.com.barauna.agenda.po.ContatoPO;
 public interface MessageRepository extends CrudRepository<ContatoPO, Long> {
 
 	/**
-	 * Retorna todos os contatos que contenha no nome a String passada como parâmetro
+	 * Retorna todos os contatos que contenha no nome o texto passado como parâmetro
 	 * 	 
 	 * @param nome 
 	 * @return Lista de Contatos
@@ -22,10 +22,10 @@ public interface MessageRepository extends CrudRepository<ContatoPO, Long> {
     public List<ContatoPO> findByNomeIgnoreCaseContaining(String nome);
 
     /**
-	 * Retorna o contato que a partir do número do telefone
+	 * Retorna o contato associado ao telefone passado como parâmetro
 	 * 	 
 	 * @param telefone 
-	 * @return Contato associado ao telefone
+	 * @return Contato 
 	 */
     public Optional<ContatoPO> findByTelefone(String telefone);
 
