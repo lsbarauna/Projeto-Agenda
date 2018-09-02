@@ -14,10 +14,8 @@ import javax.validation.constraints.Size;
 @Table(name = "contato")
 public class ContatoPO extends AbstractPO implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Id
     @GeneratedValue(generator = "contato_generator")
     @SequenceGenerator(

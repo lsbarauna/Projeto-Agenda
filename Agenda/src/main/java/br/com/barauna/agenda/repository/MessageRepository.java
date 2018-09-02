@@ -29,5 +29,4 @@ public interface MessageRepository extends CrudRepository<ContatoPO, Long> {
 	 */
     public Optional<ContatoPO> findByTelefone(String telefone);
 
-
 }

@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 public abstract class AbstractPO implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public abstract Long getId();
 	
 	@Override
@@ -25,7 +30,7 @@ public abstract class AbstractPO implements Serializable{
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		@SuppressWarnings("rawtypes")
+
 		AbstractPO other = (AbstractPO) obj;
 		if (getId() == null) {
 			if (other.getId() != null) {

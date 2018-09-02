@@ -30,19 +30,18 @@ public class ContatoController {
 	@Autowired
 	private MessageService messageService;
 
-
     @GetMapping("/")
-    public Iterable<ContatoPO> getContatos() {
+    public Iterable<ContatoPO> getAll() {
         return messageService.findAll();
     }
     
     @GetMapping("/{contatoId}")
-    public ContatoPO getContato(@PathVariable Long contatoId) {
+    public ContatoPO getById(@PathVariable Long contatoId) {
     	return messageService.findById(contatoId).get();
     }
     
     @GetMapping("/nome/{contatoNome}")
-    public Iterable<ContatoPO> getByNomePO(@PathVariable String contatoNome) {
+    public Iterable<ContatoPO> getByNome(@PathVariable String contatoNome) {
         return messageService.findByNomeIgnoreCaseContaining(contatoNome);
     }
     
@@ -64,7 +63,6 @@ public class ContatoController {
     	
         return messageService.save(contatoRequest);
     }
-
 
     @DeleteMapping("/{contatoId}")
     public ResponseEntity<?> delete(@PathVariable Long contatoId) {
