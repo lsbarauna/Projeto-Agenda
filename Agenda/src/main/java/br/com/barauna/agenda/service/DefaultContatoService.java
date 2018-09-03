@@ -9,22 +9,22 @@ import org.springframework.stereotype.Component;
 
 import br.com.barauna.agenda.exception.ApplicationException;
 import br.com.barauna.agenda.po.ContatoPO;
-import br.com.barauna.agenda.repository.MessageRepository;
-import br.com.barauna.agenda.service.contracts.MessageService;
+import br.com.barauna.agenda.repository.ContatoRepository;
+import br.com.barauna.agenda.service.contracts.ContatoService;
 
 /**
  * @author sergio
  *
  */
 @Component
-public class DefaultMessageService extends AbstractService<ContatoPO, Long> implements MessageService {
+public class DefaultContatoService extends AbstractService<ContatoPO, Long> implements ContatoService {
 
 	@Autowired
-	private MessageRepository messageRepository;
+	private ContatoRepository contatoRepository;
 
 	@Override
 	public CrudRepository<ContatoPO, Long> getCrudRepository() {
-		return messageRepository;
+		return contatoRepository;
 	}
 
 	/**
@@ -37,7 +37,7 @@ public class DefaultMessageService extends AbstractService<ContatoPO, Long> impl
 	@Override
 	public ContatoPO save(ContatoPO contatoPO) {
 
-		Optional<ContatoPO> contatoByTefone = messageRepository.findByTelefone(contatoPO.getTelefone());
+		Optional<ContatoPO> contatoByTefone = contatoRepository.findByTelefone(contatoPO.getTelefone());
 		
 		if (contatoByTefone.isPresent() && !contatoByTefone.get().getId().equals(contatoPO.getId())) {
 			throw new ApplicationException("Já existe um contato com esse telefone.");
@@ -49,19 +49,19 @@ public class DefaultMessageService extends AbstractService<ContatoPO, Long> impl
 
 	
 	/* (non-Javadoc)
-	 * @see br.com.barauna.agenda.service.contracts.MessageService#findByNomeIgnoreCaseContaining(java.lang.String)
+	 * @see br.com.barauna.agenda.service.contracts.ContatoService#findByNomeIgnoreCaseContaining(java.lang.String)
 	 */
 	@Override
 	public List<ContatoPO> findByNomeIgnoreCaseContaining(String nome) {
-		return messageRepository.findByNomeIgnoreCaseContaining(nome);
+		return contatoRepository.findByNomeIgnoreCaseContaining(nome);
 	}
 
 	/* (non-Javadoc)
-	 * @see br.com.barauna.agenda.service.contracts.MessageService#findByTelefone(java.lang.String)
+	 * @see br.com.barauna.agenda.service.contracts.ContatoService#findByTelefone(java.lang.String)
 	 */
 	@Override
 	public ContatoPO findByTelefone(String telefone) {
-		return messageRepository.findByTelefone(telefone).orElse(new  ContatoPO());
+		return contatoRepository.findByTelefone(telefone).orElse(new  ContatoPO());
 	}
 	
 	

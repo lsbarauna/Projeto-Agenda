@@ -11,7 +11,7 @@ import br.com.barauna.agenda.po.ContatoPO;
  * @author sergio
  *
  */
-public interface MessageRepository extends CrudRepository<ContatoPO, Long> {
+public interface ContatoRepository extends CrudRepository<ContatoPO, Long> {
 
 	/**
 	 * Retorna todos os contatos que contenha no nome o texto passado como parâmetro

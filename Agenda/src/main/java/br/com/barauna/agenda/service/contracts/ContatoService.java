@@ -10,15 +10,15 @@ import br.com.barauna.agenda.service.Service;
  *
  */
 @org.springframework.stereotype.Service
-public interface MessageService extends Service<ContatoPO,Long>{
+public interface ContatoService extends Service<ContatoPO,Long>{
 
 	/* (non-Javadoc)
-	 * @see br.com.barauna.agenda.repository.MessageRepository#findByNomeIgnoreCaseContaining(java.lang.String)
+	 * @see br.com.barauna.agenda.repository.ContatoRepository#findByNomeIgnoreCaseContaining(java.lang.String)
 	 */
     List<ContatoPO> findByNomeIgnoreCaseContaining(String nome);
 
 	/* (non-Javadoc)
-	 * @see br.com.barauna.agenda.repository.MessageRepository#findByTelefone(java.lang.String)
+	 * @see br.com.barauna.agenda.repository.ContatoRepository#findByTelefone(java.lang.String)
 	 */
     ContatoPO findByTelefone(String telefone);
 
